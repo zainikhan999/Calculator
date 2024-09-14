@@ -20,7 +20,20 @@ buttons.forEach(button => {
                 expression = "";
             }
         }
-        
+        else if (buttonId === "%") {
+            try {
+                // Calculate percentage by dividing by 100
+                const result = eval(expression) / 100;
+                document.querySelector('#field').value = result;
+                // Update the expression with the result
+                expression = result;
+            } catch (error) {
+                document.querySelector('#field').value = 'Error';
+                // Clear the expression if there's an error
+                expression = "";
+            }
+        }
+       
         else if (buttonId === "C") {
             // Remove the last character from the expression
             expression = expression.slice(0, -1);
